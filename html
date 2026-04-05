@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Zohair Adeel (Zohi) – .NET Developer based in Karachi. Specializing in NopCommerce, ASP.NET Core, REST integrations, Xero, and Selenium automation. Available for freelance and full-time opportunities." />
+<meta name="keywords" content=".NET Developer, NopCommerce, ASP.NET Core, Xero Integration, Selenium, SQL Server, freelance developer, Karachi" />
+<title>Zohair Adeel · .NET Developer</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  /* ─── RESET & BASE ─── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:       #0A0B0F;
+    --bg2:      #101116;
+    --bg3:      #15161D;
+    --border:   rgba(255,255,255,0.07);
+    --border2:  rgba(255,255,255,0.12);
+    --text:     #E8E9F0;
+    --muted:    #7A7D8F;
+    --accent:   #6C63FF;
+    --accent2:  #A78BFA;
+    --accent3:  #38BDF8;
+    --green:    #34D399;
+    --orange:   #FB923C;
+    --glow:     rgba(108,99,255,0.18);
+    --r:        10px;
+    --r2:       16px;
+    --font-head: 'Syne', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+    --font-body: 'DM Sans', sans-serif;
+    --nav-h:    64px;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 99px; }
+
+  /* ─── LOADER ─── */
+  #loader {
+    position: fixed; inset: 0; z-index: 9999;
+    background: var(--bg);
+    display: flex; align-items: center; justify-content: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+  #loader.done { opacity: 0; visibility: hidden; }
+  .loader-inner {
+    display: flex; flex-direction: column; align-items: center; gap: 20px;
+  }
+  .loader-logo {
+    font-family: var(--font-head);
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--accent);
+  }
+  .loader-bar {
+    width: 200px; height: 2px;
+    background: var(--border);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .loader-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent3));
+    border-radius: 99px;
+    animation: loadfill 1.4s cubic-bezier(.4,0,.2,1) forwards;
+  }
+  @keyframes loadfill {
+    from { width: 0; }
+    to   { width: 100%; }
+  }
+  .loader-text {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: var(--nav-h);
+    display: flex; align-items: center;
+    padding: 0 clamp(1.5rem, 5vw, 4rem);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  nav.scrolled {
+    background: rgba(10,11,15,0.92);
+    border-bottom-color: var(--border);
+  }
+  .nav-inner {
+    max-width: 1200px; width: 100%; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: var(--font-head);
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute; bottom: -3px; left: 0; right: 100%;
+    height: 1px; background: var(--accent);
+    transition: right 0.3s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover::after { right: 0; }
+  .nav-cta {
+    background: var(--accent);
+    color: #fff !important;
+    padding: 7px 18px;
+    border-radius: 6px;
+    font-family: var(--font-mono) !important;
+    font-size: 0.76rem !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background 0.2s, transform 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--accent2) !important; transform: translateY(-1px); }
+  .nav-cta::after { display: none !important; }
+
+  /* hamburger */
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px;
+  }
+  .hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--text); border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* mobile menu */
+  .mobile-menu {
+    display: none;
+    position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 99;
+    background: rgba(10,11,15,0.97);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem;
+    flex-direction: column; gap: 1.25rem;
+    transform: translateY(-10px);
+    opacity: 0;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .mobile-menu.open { display: flex; transform: translateY(0); opacity: 1; }
+  .mobile-menu a {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ─── LAYOUT ─── */
+  section { padding: 6rem clamp(1.5rem, 5vw, 4rem); }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: var(--font-head);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 1rem;
+  }
+  .section-sub {
+    color: var(--muted);
+    max-width: 560px;
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding-top: calc(var(--nav-h) + 2rem);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 40%, black 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 40%, black 30%, transparent 80%);
+  }
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(108,99,255,0.12) 0%, transparent 70%);
+    top: -100px; left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    position: relative; z-index: 1;
+    max-width: 1200px; margin: 0 auto; width: 100%;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(108,99,255,0.1);
+    border: 1px solid rgba(108,99,255,0.25);
+    border-radius: 99px;
+    padding: 6px 14px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--accent2);
+    letter-spacing: 1px;
+    margin-bottom: 1.75rem;
+    animation: fadeUp 0.8s ease both;
+  }
+  .badge-dot {
+    width: 6px; height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity:1; transform:scale(1); }
+    50%      { opacity:0.5; transform:scale(1.4); }
+  }
+  .hero-name {
+    font-family: var(--font-head);
+    font-size: clamp(3.5rem, 9vw, 7.5rem);
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -3px;
+    margin-bottom: 0.3rem;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+  .hero-name .accent { color: var(--accent); }
+  .hero-title {
+    font-family: var(--font-mono);
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+  .hero-title span { color: var(--accent3); }
+  .hero-tagline {
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    color: #9FA3B8;
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+  .hero-actions {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent);
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: var(--r);
+    font-family: var(--font-head);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: -0.3px;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    border: none; cursor: pointer;
+  }
+  .btn-primary:hover {
+    background: var(--accent2);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(108,99,255,0.35);
+  }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent;
+    color: var(--text);
+    padding: 13px 28px;
+    border-radius: var(--r);
+    font-family: var(--font-head);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid var(--border2);
+    transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    cursor: pointer;
+  }
+  .btn-secondary:hover {
+    border-color: var(--accent);
+    background: rgba(108,99,255,0.07);
+    transform: translateY(-2px);
+  }
+  .hero-scroll {
+    position: absolute; bottom: 2rem; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    animation: fadeUp 1s 0.8s ease both;
+  }
+  .hero-scroll span {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+    animation: scrollline 1.5s ease-in-out infinite;
+  }
+  @keyframes scrollline {
+    0%,100% { transform: scaleY(1); opacity: 1; }
+    50%      { transform: scaleY(0.4); opacity: 0.4; }
+  }
+
+  /* ─── ABOUT ─── */
+  #about { background: var(--bg2); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .about-img-wrap {
+    position: relative;
+  }
+  .about-avatar {
+    width: 100%;
+    aspect-ratio: 1;
+    max-width: 380px;
+    background: var(--bg3);
+    border-radius: var(--r2);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-avatar::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(108,99,255,0.08), transparent 60%);
+  }
+  .about-initials {
+    font-family: var(--font-head);
+    font-size: 6rem;
+    font-weight: 800;
+    color: var(--accent);
+    opacity: 0.5;
+    letter-spacing: -4px;
+  }
+  .about-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--r2);
+    display: block;
+  }
+  .about-photo-wrap {
+    width: 100%;
+    aspect-ratio: 1;
+    max-width: 380px;
+    border-radius: var(--r2);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    position: relative;
+  }
+  .about-photo-wrap::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(108,99,255,0.1) 0%, transparent 50%);
+    pointer-events: none;
+    border-radius: var(--r2);
+  }
+  .about-badge-float {
+    position: absolute;
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: var(--r);
+    padding: 12px 16px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text);
+  }
+  .about-badge-float.top-right {
+    top: -16px; right: -16px;
+  }
+  .about-badge-float.bottom-left {
+    bottom: -16px; left: -16px;
+  }
+  .float-num {
+    font-family: var(--font-head);
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--accent);
+    display: block;
+    line-height: 1.1;
+  }
+  .about-text p {
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+    font-size: 1.02rem;
+  }
+  .about-text p strong { color: var(--text); }
+  .about-tags {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.75rem;
+  }
+  .tag {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .tag:hover { border-color: var(--accent); color: var(--accent2); }
+
+  /* ─── SKILLS ─── */
+  #skills {}
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+  .skill-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--r2);
+    padding: 1.75rem;
+    transition: border-color 0.3s, transform 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .skill-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: var(--r2) var(--r2) 0 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .skill-card.c1::before { background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+  .skill-card.c2::before { background: linear-gradient(90deg, var(--accent3), #60A5FA); }
+  .skill-card.c3::before { background: linear-gradient(90deg, var(--green), #6EE7B7); }
+  .skill-card.c4::before { background: linear-gradient(90deg, var(--orange), #FCD34D); }
+  .skill-card:hover { border-color: var(--border2); transform: translateY(-4px); }
+  .skill-card:hover::before { opacity: 1; }
+  .skill-icon {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .skill-card-title {
+    font-family: var(--font-head);
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    color: var(--text);
+  }
+  .skill-item {
+    margin-bottom: 1rem;
+  }
+  .skill-item:last-child { margin-bottom: 0; }
+  .skill-row {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 6px;
+  }
+  .skill-name {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.3px;
+  }
+  .skill-pct {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--accent2);
+  }
+  .skill-bar {
+    height: 3px;
+    background: var(--bg3);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .skill-fill {
+    height: 100%;
+    border-radius: 99px;
+    width: 0;
+    transition: width 1.2s cubic-bezier(.4,0,.2,1);
+  }
+  .c1 .skill-fill { background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+  .c2 .skill-fill { background: linear-gradient(90deg, var(--accent3), #60A5FA); }
+  .c3 .skill-fill { background: linear-gradient(90deg, var(--green), #6EE7B7); }
+  .c4 .skill-fill { background: linear-gradient(90deg, var(--orange), #FCD34D); }
+
+  /* ─── PROJECTS ─── */
+  #projects { background: var(--bg2); }
+  .projects-filter {
+    display: flex; gap: 0.75rem; flex-wrap: wrap;
+    margin-top: 2rem; margin-bottom: 3rem;
+  }
+  .filter-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 7px 16px;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    border-color: var(--accent);
+    color: var(--accent2);
+    background: rgba(108,99,255,0.08);
+  }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+  .project-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--r2);
+    padding: 2rem;
+    transition: border-color 0.3s, transform 0.3s;
+    display: flex; flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at top right, rgba(108,99,255,0.06), transparent 60%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .project-card:hover { border-color: rgba(108,99,255,0.35); transform: translateY(-4px); }
+  .project-card:hover::after { opacity: 1; }
+  .project-card.hidden { display: none; }
+  .project-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+  .project-icon {
+    font-size: 1.75rem;
+  }
+  .project-status {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 99px;
+  }
+  .status-live { background: rgba(52,211,153,0.12); color: var(--green); border: 1px solid rgba(52,211,153,0.25); }
+  .status-dev  { background: rgba(56,189,248,0.12); color: var(--accent3); border: 1px solid rgba(56,189,248,0.25); }
+  .project-title {
+    font-family: var(--font-head);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    color: var(--text);
+  }
+  .project-desc {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+    flex: 1;
+  }
+  .project-features {
+    list-style: none;
+    margin-bottom: 1.5rem;
+  }
+  .project-features li {
+    font-size: 0.84rem;
+    color: #8890A8;
+    padding: 4px 0;
+    padding-left: 1rem;
+    position: relative;
+  }
+  .project-features li::before {
+    content: '→';
+    position: absolute; left: 0;
+    color: var(--accent);
+    font-size: 0.75rem;
+  }
+  .project-stack {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin-top: auto;
+  }
+  .stack-tag {
+    background: rgba(108,99,255,0.1);
+    border: 1px solid rgba(108,99,255,0.2);
+    border-radius: 4px;
+    padding: 3px 9px;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--accent2);
+    letter-spacing: 0.5px;
+  }
+
+  /* ─── EXPERIENCE ─── */
+  #experience {}
+  .exp-timeline {
+    position: relative;
+    margin-top: 3.5rem;
+    padding-left: 2rem;
+  }
+  .exp-timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 8px; bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+  }
+  .exp-item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 2rem;
+  }
+  .exp-item::before {
+    content: '';
+    position: absolute; left: -2.5rem; top: 8px;
+    width: 9px; height: 9px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(108,99,255,0.2);
+  }
+  .exp-meta {
+    display: flex; align-items: center; gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+  }
+  .exp-period {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 1px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 3px 10px;
+  }
+  .exp-current {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--green);
+    background: rgba(52,211,153,0.1);
+    border: 1px solid rgba(52,211,153,0.2);
+    border-radius: 4px;
+    padding: 3px 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .exp-role {
+    font-family: var(--font-head);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+  .exp-company {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--accent2);
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.5px;
+  }
+  .exp-desc {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+  .exp-highlights {
+    list-style: none;
+    margin-top: 1rem;
+    display: flex; flex-direction: column; gap: 0.5rem;
+  }
+  .exp-highlights li {
+    font-size: 0.88rem;
+    color: #8890A8;
+    padding-left: 1.25rem;
+    position: relative;
+  }
+  .exp-highlights li::before {
+    content: '◆';
+    position: absolute; left: 0;
+    color: var(--accent);
+    font-size: 0.45rem;
+    top: 0.45rem;
+  }
+
+  /* ─── CONTACT ─── */
+  #contact { background: var(--bg2); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+    margin-top: 3.5rem;
+  }
+  .contact-info h3 {
+    font-family: var(--font-head);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+  .contact-info p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin-bottom: 2rem;
+  }
+  .contact-links {
+    display: flex; flex-direction: column; gap: 0.75rem;
+  }
+  .contact-link {
+    display: flex; align-items: center; gap: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+    padding: 10px 14px;
+    border-radius: var(--r);
+    border: 1px solid transparent;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .contact-link:hover {
+    border-color: var(--border);
+    background: var(--bg3);
+    color: var(--text);
+  }
+  .contact-link-icon {
+    width: 36px; height: 36px;
+    background: var(--bg3);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+  .contact-form {
+    display: flex; flex-direction: column; gap: 1.1rem;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 12px 14px;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    resize: none;
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(108,99,255,0.12);
+  }
+  .form-group textarea { height: 120px; }
+  .form-submit {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+  }
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+    font-family: var(--font-mono);
+    color: var(--green);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 2rem clamp(1.5rem, 5vw, 4rem);
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-copy {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+  }
+  .footer-copy span { color: var(--accent); }
+  .footer-social { display: flex; gap: 0.75rem; }
+  .footer-social a {
+    width: 34px; height: 34px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .footer-social a:hover { border-color: var(--accent); background: rgba(108,99,255,0.1); }
+  .footer-links { display: flex; gap: 1.25rem; }
+  .footer-links a {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--text); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-img-wrap { display: none; }
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-name { letter-spacing: -2px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
+  @media (max-width: 600px) {
+    .form-row { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .hero-actions { flex-direction: column; }
+    .btn-primary, .btn-secondary { text-align: center; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-inner">
+    <div class="loader-logo">ZA</div>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+    <div class="loader-text">Initializing</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">Zohair<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#skills" onclick="closeMenu()">Skills</a>
+  <a href="#projects" onclick="closeMenu()">Projects</a>
+  <a href="#experience" onclick="closeMenu()">Experience</a>
+  <a href="#contact" onclick="closeMenu()">Hire Me</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner container">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      Available for Freelance &amp; New Opportunities
+    </div>
+    <h1 class="hero-name">Zohair<br><span class="accent">Adeel.</span></h1>
+    <p class="hero-title">.NET Developer <span>/ Backend Engineer</span></p>
+    <p class="hero-tagline">
+      I build robust, scalable backend systems customizations
+      to complex API integrations. Turning business logic into clean, maintainable code.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Hire Me
+      </a>
+      <a href="#projects" class="btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        View Projects
+      </a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal">
+        <div class="about-photo-wrap">
+          <img
+            src="https://raw.githubusercontent.com/Zohair-git/portfolio/main/Zohair.jpg"
+            alt="Zohair Adeel – .NET Developer"
+            class="about-photo"
+            onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--bg3);\'><span class=\'about-initials\'>ZA</span></div>'"
+          />
+        </div>
+        <div class="about-badge-float top-right">
+          <span class="float-num">4+</span>
+          Years Experience
+        </div>
+        <div class="about-badge-float bottom-left">
+          <span class="float-num">20+</span>
+          Projects Delivered
+        </div>
+      </div>
+      <div class="about-text">
+        <p class="section-label reveal">About Me</p>
+        <h2 class="section-title reveal reveal-delay-1">
+          Building solid backends,<br>one commit at a time.
+        </h2>
+        <p class="reveal reveal-delay-2">
+          I'm a <strong>.NET developer</strong> with hands-on experience in NopCommerce development,
+          ASP.NET MVC/Core, and real-world API integrations. I specialize in solving complex
+          backend challenges — whether that's syncing invoices with Xero, customizing
+          e-commerce platforms, or automating repetitive workflows with Selenium.
+        </p>
+        <p class="reveal reveal-delay-3">
+          Currently expanding into <strong>Angular + .NET</strong> full-stack development,
+          with a clear goal: transition into freelancing and high-impact roles where
+          clean architecture and reliable delivery matter most.
+        </p>
+        <p class="reveal reveal-delay-4">
+          I approach every project as a problem to be solved — not just a ticket to close.
+          Based in <strong>Karachi, Pakistan</strong> — working locally and remotely with clients worldwide.
+          If it touches a database, an API, or a business process, I want to understand it fully.
+        </p>
+        <div class="about-tags reveal reveal-delay-4">
+          <span class="tag">ASP.NET Core</span>
+          <span class="tag">NopCommerce</span>
+          <span class="tag">SQL Server</span>
+          <span class="tag">REST APIs</span>
+          <span class="tag">Xero Integration</span>
+          <span class="tag">Selenium</span>
+          <span class="tag">React Basics</span>
+          <span class="tag">Angular (Learning)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <p class="section-label reveal">Technical Expertise</p>
+    <h2 class="section-title reveal reveal-delay-1">Skills &amp; Technologies</h2>
+    <p class="section-sub reveal reveal-delay-2">
+      A focused stack built around .NET ecosystems, data management, and integration engineering.
+    </p>
+    <div class="skills-grid">
+
+      <div class="skill-card c1 reveal reveal-delay-1">
+        <span class="skill-icon">⚙️</span>
+        <div class="skill-card-title">Backend Development</div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">ASP.NET Core</span><span class="skill-pct">90%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-w="90"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">ASP.NET MVC</span><span class="skill-pct">88%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-w="88"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">NopCommerce</span><span class="skill-pct">85%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-w="85"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">C# / OOP</span><span class="skill-pct">90%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-w="90"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-card c2 reveal reveal-delay-2">
+        <span class="skill-icon">🗄️</span>
+        <div class="skill-card-title">Database & Data</div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">SQL Server</span><span class="skill-pct">88%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-w="88"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">T-SQL / Stored Procs</span><span class="skill-pct">82%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-w="82"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">Entity Framework</span><span class="skill-pct">80%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-w="80"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">LINQ</span><span class="skill-pct">85%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-w="85"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-card c3 reveal reveal-delay-3">
+        <span class="skill-icon">🌐</span>
+        <div class="skill-card-title">Frontend & UI</div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">React</span><span class="skill-pct">85%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-w="55"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">Angular</span><span class="skill-pct">80%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-w="40"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">JavaScript / HTML/CSS</span><span class="skill-pct">72%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-w="72"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">Razor / Blazor</span><span class="skill-pct">76%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-w="76"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-card c4 reveal reveal-delay-4">
+        <span class="skill-icon">🔧</span>
+        <div class="skill-card-title">Tools & Integrations</div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">REST API Design</span><span class="skill-pct">87%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-w="87"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">Xero API</span><span class="skill-pct">82%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-w="82"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">Selenium Automation</span><span class="skill-pct">80%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-w="80"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">Git / Azure DevOps</span><span class="skill-pct">78%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-w="78"></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <p class="section-label reveal">Selected Work</p>
+    <h2 class="section-title reveal reveal-delay-1">Projects</h2>
+    <p class="section-sub reveal reveal-delay-2">
+      Real-world solutions I've built — from accounting integrations to e-commerce customizations.
+    </p>
+    <div class="projects-filter reveal reveal-delay-2">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="integration">Integrations</button>
+      <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
+      <button class="filter-btn" data-filter="automation">Automation</button>
+    </div>
+    <div class="projects-grid" id="projectsGrid">
+
+      <div class="project-card reveal" data-cat="integration">
+        <div class="project-header">
+          <span class="project-icon">📊</span>
+          <span class="project-status status-live">Live</span>
+        </div>
+        <a href="https://portal.gas4wales.co.uk/"><h3 class="project-title">Xero Integration System</h3></a>
+        <p class="project-desc">
+          A full-featured accounting integration connecting a .NET application to Xero — syncing invoices, contacts, payments, and credit notes in real time.
+        </p>
+        <ul class="project-features">
+          <li>Two-way invoice sync with conflict resolution</li>
+          <li>Automatic contact creation and mapping</li>
+          <li>OAuth 2.0 token management and refresh</li>
+          <li>Webhook listener for real-time Xero events</li>
+          <li>Detailed sync logs with retry mechanism</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-tag">ASP.NET Core</span>
+          <span class="stack-tag">Xero API</span>
+          <span class="stack-tag">SQL Server</span>
+          <span class="stack-tag">OAuth 2.0</span>
+          <span class="stack-tag">REST</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-1" data-cat="ecommerce">
+        <div class="project-header">
+          <span class="project-icon">🛒</span>
+          <span class="project-status status-live">Live</span>
+        </div>
+        <a href="https://anglersbay.com/"><h3 class="project-title">NopCommerce Custom Platform</h3></a>
+        <p class="project-desc">
+          Extensive customization of NopCommerce for a B2B e-commerce client — custom pricing, role-based access, and tailored checkout workflows.
+        </p>
+        <ul class="project-features">
+          <li>Custom plugin: tiered pricing engine</li>
+          <li>Role-based product visibility and catalog</li>
+          <li>Custom order workflow with approval steps</li>
+          <li>Admin panel extensions for operations team</li>
+          <li>Performance tuning for large product catalogs</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-tag">NopCommerce</span>
+          <span class="stack-tag">ASP.NET MVC</span>
+          <span class="stack-tag">SQL Server</span>
+          <span class="stack-tag">C#</span>
+          <span class="stack-tag">Razor</span>
+        </div>
+      </div>
+      <div class="project-card reveal reveal-delay-3" data-cat="integration">
+        <div class="project-header">
+          <span class="project-icon">🔗</span>
+          <span class="project-status status-dev">In Dev</span>
+        </div>
+        <h3 class="project-title">REST API Gateway</h3>
+        <p class="project-desc">
+          A centralized API gateway built in .NET Core that aggregates multiple internal services, handles auth, rate limiting, and provides a unified endpoint for frontend clients.
+        </p>
+        <ul class="project-features">
+          <li>JWT-based authentication middleware</li>
+          <li>Rate limiting and request throttling</li>
+          <li>Service aggregation and response transformation</li>
+          <li>Swagger documentation auto-generation</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-tag">ASP.NET Core</span>
+          <span class="stack-tag">JWT</span>
+          <span class="stack-tag">Swagger</span>
+          <span class="stack-tag">Middleware</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-2" data-cat="automation">
+        <div class="project-header">
+          <span class="project-icon">⚡</span>
+          <span class="project-status status-dev">In Dev</span>
+        </div>
+        <h3 class="project-title">.NET + Angular Full-Stack App</h3>
+        <p class="project-desc">
+          A learning project — building a complete task/project management app with .NET 8 Web API on the backend and Angular 17 on the frontend.
+        </p>
+        <ul class="project-features">
+          <li>Clean Architecture + CQRS pattern</li>
+          <li>Angular standalone components</li>
+          <li>Real-time updates via SignalR</li>
+          <li>JWT auth + refresh token rotation</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-tag">.NET 8</span>
+          <span class="stack-tag">Angular 17</span>
+          <span class="stack-tag">SignalR</span>
+          <span class="stack-tag">Clean Arch</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <p class="section-label reveal">Career</p>
+    <h2 class="section-title reveal reveal-delay-1">Experience</h2>
+    <p class="section-sub reveal reveal-delay-2">
+      Focused on real-world delivery — building systems that solve actual business problems.
+    </p>
+    <div class="exp-timeline">
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <span class="exp-period">2024 – Present</span>
+          <span class="exp-current">Current Role</span>
+        </div>
+        <div class="exp-role">.NET Developer</div>
+        <div class="exp-company">Software House / Product Company</div>
+        <p class="exp-desc">
+          Leading backend development for NopCommerce-based platforms and custom .NET Core applications. Responsible for architecture decisions, API integrations, and code quality.
+        </p>
+        <ul class="exp-highlights">
+          <li>Designed and delivered full Xero accounting integration — invoices, contacts, and payment reconciliation</li>
+          <li>Customized NopCommerce for B2B clients with complex pricing and workflow requirements</li>
+          <li>Built and maintained REST API layer consumed by frontend React applications</li>
+          <li>Reduced manual testing effort by 70%+ through Selenium automation suite</li>
+          <li>Mentored junior developers and performed code reviews to maintain quality standards</li>
+          <li>Collaborated directly with clients to translate business requirements into technical specs</li>
+        </ul>
+      </div>
+
+      <div class="exp-item reveal reveal-delay-1">
+        <div class="exp-meta">
+          <span class="exp-period">2022 – Present</span>
+        </div>
+        <div class="exp-role">Sofware Developer</div>
+        <div class="exp-company">IT Services Company</div>
+        <p class="exp-desc">
+          Started career building MVC applications and working with SQL Server. Developed strong foundations in C#, REST API consumption, and database design.
+        </p>
+        <ul class="exp-highlights">
+          <li>Built internal CRUD applications using ASP.NET MVC and SQL Server</li>
+          <li>Integrated third-party APIs (payment gateways, shipping providers)</li>
+          <li>Wrote stored procedures and optimized slow SQL queries</li>
+          <li>Maintained and enhanced existing NopCommerce installations</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label reveal">Get In Touch</p>
+    <h2 class="section-title reveal reveal-delay-1">Let's Work Together</h2>
+    <div class="contact-grid">
+      <div class="contact-info reveal reveal-delay-2">
+        <h3>Open to freelance projects and full-time roles.</h3>
+        <p>
+          Whether you need a NopCommerce expert, a backend API built, or a
+          complex integration with accounting software — I'm ready to help.
+          Let's build something great.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:zohairadeel987@gmail.com" class="contact-link">
+            <span class="contact-link-icon">✉️</span>
+            zohairadeel987@gmail.com
+          </a>
+          <a href="tel:+923361122873" class="contact-link">
+            <span class="contact-link-icon">📱</span>
+            +92 336 112 2873
+          </a>
+          <a href="https://www.linkedin.com/in/zohair-adeel-b853a022b" target="_blank" rel="noopener" class="contact-link">
+            <span class="contact-link-icon">💼</span>
+            linkedin.com/in/zohair-adeel
+          </a>
+          <a href="https://github.com/Zohair-git" target="_blank" rel="noopener" class="contact-link">
+            <span class="contact-link-icon">🐱</span>
+            github.com/Zohair-git
+          </a>
+          <a href="https://github.com/Zohair-git/portfolio/raw/main/zohair'sresume.pdf" target="_blank" rel="noopener" class="contact-link">
+            <span class="contact-link-icon">📄</span>
+            Download CV
+          </a>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-3">
+        <div class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" placeholder="John" />
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" placeholder="Smith" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="john@company.com" />
+          </div>
+          <div class="form-group">
+            <label for="subject">I Need</label>
+            <select id="subject">
+              <option value="">Select a service...</option>
+              <option>.Net Backend Development</option>
+              <option>API Integration (Xero, etc.)</option>
+              <option>ASP.NET Core Application</option>
+              <option>Test Automation (Selenium)</option>
+              <option>Code Review / Consulting</option>
+              <option>Something Else</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Tell me about your project..."></textarea>
+          </div>
+          <button class="btn-primary form-submit" onclick="submitForm()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Send Message
+          </button>
+        </div>
+        <div class="form-success" id="formSuccess">
+          ✓ Message sent! I'll get back to you within 24 hours.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-copy">© 2025 <span>Zohair Adeel</span> · Karachi, Pakistan · Crafted with precision</p>
+  <div style="display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;">
+    <div class="footer-social">
+      <a href="https://github.com/Zohair-git" target="_blank" rel="noopener" title="GitHub">🐱</a>
+      <a href="https://www.linkedin.com/in/zohair-adeel-b853a022b" target="_blank" rel="noopener" title="LinkedIn">💼</a>
+      <a href="mailto:zohairadeel987@gmail.com" title="Email">✉️</a>
+    </div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Loader
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('loader').classList.add('done');
+    }, 1600);
+  });
+
+  // Nav scroll effect
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Mobile menu
+  function toggleMenu() {
+    const h = document.getElementById('hamburger');
+    const m = document.getElementById('mobileMenu');
+    h.classList.toggle('open');
+    m.classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        // Animate skill bars when skill section is visible
+        if (e.target.closest('#skills')) {
+          const fills = e.target.querySelectorAll('.skill-fill');
+          fills.forEach(f => {
+            f.style.width = f.dataset.w + '%';
+          });
+        }
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Also trigger skill bars for any visible skill card on initial load
+  setTimeout(() => {
+    document.querySelectorAll('.skill-card').forEach(card => {
+      const fills = card.querySelectorAll('.skill-fill');
+      fills.forEach(f => {
+        if (card.getBoundingClientRect().top < window.innerHeight) {
+          f.style.width = f.dataset.w + '%';
+        }
+      });
+    });
+  }, 2000);
+
+  // Project filter
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      projectCards.forEach(card => {
+        if (filter === 'all' || card.dataset.cat === filter) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  // Form submit
+  function submitForm() {
+    const fname = document.getElementById('fname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+    if (!fname || !email || !message) {
+      alert('Please fill in your name, email, and message.');
+      return;
+    }
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  }
+</script>
+</body>
+</html>
